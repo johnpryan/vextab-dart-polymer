@@ -12,7 +12,18 @@ class VexTab extends PolymerElement {
   
   VexTab.created() : super.created();
 
-  ready() {
+  attached() {
+    var contentElement = $$('content');
+      var nodes = Polymer.dom(contentElement).getDistributedNodes();
+      var text = (nodes.first as Text).text;
+    $$('#content-holder').remove();
+//      var contentPolymer = new PolymerDom(contentElement);
+//      for (var child in contentPolymer.children) {
+//        contentPolymer.removeChild(child);
+//      }
+    contentElement.remove();
+    var vextabInput = $$('#vextab-input');
+    vextabInput.text = text;
     js.context.callMethod('loadVexTab');
   }
   
