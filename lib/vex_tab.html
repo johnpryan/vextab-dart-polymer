@@ -13,11 +13,17 @@
             margin: 0px;
             height: 80%;
         }
+
+        .content-holder {
+            display: none;
+        }
+
         #error {
             font-family: Courier;
             color: red;
             width: 600px;
         }
+
         textarea#vextab-input {
             width: 500px;
             height: 300px;
@@ -27,50 +33,48 @@
             margin-top: 40px;
             border: #eee solid 10px;
         }
+
+
     </style>
     <script type="text/javascript">
         // Load VexTab module.
         vextab = VexTabDiv;
 
-        function loadVexTab() {
+        function configure() {
             VexTab = vextab.VexTab;
             Artist = vextab.Artist;
             Renderer = Vex.Flow.Renderer;
             Artist.DEBUG = true;
             VexTab.DEBUG = false;
-            renderer = new Renderer($('#vextab-target')[0], Renderer.Backends.CANVAS);
+            var target = $('#vextab-target')[0];
+            console.log("target = " + JSON.stringify(target));
+            renderer = new Renderer(target, Renderer.Backends.CANVAS);
             // Initialize VexTab artist and parser.
             artist = new Artist(10, 10, 600, {scale: 0.8});
             vextab = new VexTab(artist);
-            function render() {
-                try {
-                    vextab.reset();
-                    artist.reset();
-                    vextab.parse($("#vextab-input").val());
-                    artist.render(renderer);
-                    $("#error").text("");
-                } catch (e) {
-                    console.log(e);
-                    $("#error").html(e.message.replace(/[\n]/g, '<br/>'));
-                }
+        }
+
+        function render() {
+            try {
+                vextab.reset();
+                artist.reset();
+                var input = $("#vextab-input");
+                var text = input.text();
+                console.log('text = ' + text);
+                vextab.parse(text);
+                artist.render(renderer);
+                $("#error").text("");
+            } catch (e) {
+                console.log(e);
+                $("#error").html(e.message.replace(/[\n]/g, '<br/>'));
             }
-            $("#vextab-input").keyup(_.throttle(render, 250));
-            render();
         }
     </script>
     <template>
-        <h1>VexTab Playground</h1>
-
         <div style="float:left;width:600px;">
             <canvas id="vextab-target"></canvas>
             <div id="error"></div>
         </div>
-
-        <div style="float:left;">
-            <textarea id="vextab-input"></textarea>
-        </div>
-        <div id="content-holder">
-            <content></content>
-        </div>
+        <div id="vextab-input" class="content-holder" hidden>[[source]]</div>
     </template>
 </dom-module>
