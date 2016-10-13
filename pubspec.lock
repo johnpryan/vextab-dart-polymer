@@ -49,6 +49,12 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.2+3"
+  codemirror:
+    description:
+      name: codemirror
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.1+5.13.4"
   collection:
     description:
       name: collection
@@ -175,6 +181,12 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.6.7"
+  stream_transformers:
+    description:
+      name: stream_transformers
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.0+3"
   string_scanner:
     description:
       name: string_scanner

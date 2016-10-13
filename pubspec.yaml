@@ -4,6 +4,8 @@ dependencies:
   polymer: ^1.0.0-rc.17
   polymer_elements: ^1.0.0-rc.8
   web_components: ^0.12.3
+  stream_transformers: any
+  codemirror: any
 transformers:
   - polymer:
       entry_points:

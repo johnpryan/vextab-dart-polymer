@@ -5,15 +5,6 @@
 
     <link rel="stylesheet" type="text/css" href="packages/vextab/vextab.css" />
     <style type="text/css">
-        body {
-            padding: 20px;
-            font-family: Arial, sans-serif;
-            font-size: 12px;
-            color: #554;
-            margin: 0px;
-            height: 80%;
-        }
-
         .content-holder {
             display: none;
         }
@@ -21,19 +12,18 @@
         #error {
             font-family: Courier;
             color: red;
-            width: 600px;
         }
 
-        textarea#vextab-input {
-            width: 500px;
-            height: 300px;
-            font-family: Courier;
-            font-size: 12px;
-            padding: 10px;
-            margin-top: 40px;
-            border: #eee solid 10px;
+        .container {
+            margin-left:auto;
+            margin-right:auto;
         }
 
+        canvas {
+            display: block;
+            margin-left:auto;
+            margin-right:auto;
+        }
 
     </style>
     <script type="text/javascript">
@@ -47,7 +37,6 @@
             Artist.DEBUG = true;
             VexTab.DEBUG = false;
             var target = $('#vextab-target')[0];
-            console.log("target = " + JSON.stringify(target));
             renderer = new Renderer(target, Renderer.Backends.CANVAS);
             // Initialize VexTab artist and parser.
             artist = new Artist(10, 10, 600, {scale: 0.8});
@@ -71,7 +60,7 @@
         }
     </script>
     <template>
-        <div style="float:left;width:600px;">
+        <div class="container">
             <canvas id="vextab-target"></canvas>
             <div id="error"></div>
         </div>

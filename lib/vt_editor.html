@@ -1,9 +1,36 @@
 <dom-module id="vt-editor">
     <style>
+        :host {
+            background-color: var(--paper-grey-100);
+            @apply(--layout-vertical);
+            @apply(--layout-center);
+        }
+
+        :host > * {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        h1 {
+            font-family: Georgia;
+            font-weight: 100;
+            color: var(--paper-grey-800);
+        }
+
+        paper-card {
+            width: 600px;
+        }
+        paper-card > vex-tab {
+            width :100%;
+        }
     </style>
     <template>
         <h1>VexTab Editor</h1>
-        <iron-autogrow-textarea value="{{source}}"></iron-autogrow-textarea>
-        <vex-tab source="[[source]]"></vex-tab>
+        <paper-card>
+            <codemirror-element value="{{source}}"></codemirror-element>
+        </paper-card>
+        <paper-card>
+            <vex-tab source="[[source]]"></vex-tab>
+        </paper-card>
     </template>
 </dom-module>
